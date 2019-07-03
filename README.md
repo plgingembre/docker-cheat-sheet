@@ -946,7 +946,8 @@ Check namespaces:
 ## Deploy Kubernetes
 
 There are many options to deploy k8s:
-- Minikube ==> perfect for a developer who wants to test code on his/her local machine 
-- Vagrant VM
+- Learning environment:
+  - Minikube ==> perfect for a developer who wants to test code on his/her local machine 
+  - Vagrant VM
 - Kubespray ==> Production ready deployment using Ansible for automated deployment
 - Cloud implementations

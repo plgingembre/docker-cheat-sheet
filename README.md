@@ -1,6 +1,6 @@
 # Docker
 
-# Building a docker image for the first time
+## Building a docker image for the first time
 
 ## Create a directory and move into this new directory (kind of project directory)
 mkdir redis-server
@@ -19,12 +19,12 @@ RUN apk add --update redis
 
 # Tell the image what to do when it starts as a container
 CMD ["redis-server"]
-
-
-## Build the container from the image
-docker build .
 ```
 
+## Build the container from the image
+`docker build .`
+
+```
 plgingembre@SV-LT-1179:~/docker/redis-image$ docker build .
 Sending build context to Docker daemon  2.048kB
 Step 1/3 : FROM alpine
@@ -50,10 +50,11 @@ Removing intermediate container 179a53af6464 <<< Temporary Container stopped and
  ---> 6b929386a91e
 Successfully built 6b929386a91e
 plgingembre@SV-LT-1179:~/docker/redis-image$
-
+```
 ## Running the docker container
-docker run 6b929386a91e
+`docker run 6b929386a91e`
 
+```
 plgingembre@SV-LT-1179:~/docker/redis-image$ docker run 6b929386a91e
 1:C 01 Jun 18:04:16.118 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
 1:C 01 Jun 18:04:16.118 # Redis version=4.0.12, bits=64, commit=1be97168, modified=0, pid=1, just started
@@ -69,18 +70,19 @@ plgingembre@SV-LT-1179:~/docker/redis-image$ docker run 6b929386a91e
 1:M 01 Jun 18:04:32.841 * DB saved on disk
 1:M 01 Jun 18:04:32.842 # Redis is now ready to exit, bye bye...
 plgingembre@SV-LT-1179:~/docker/redis-image$
+```
 
 ## Show docker images on the local host
-docker image ls
+`docker image ls`
 
 ## Create an image with a tag name
-docker build -t your_docker_id/repo_or_project_name[:version] . (version is often 'latest', '.' is the directory to use for the build)
+`docker build -t your_docker_id/repo_or_project_name[:version] . ` (version is often 'latest', '.' is the directory to use for the build)
 
 ## Remove all stopped containers, networks not used, images without a containers using it, build cache
 `docker system prune -a`
 
 
-# Connect docker containers together
+## Connect docker containers together
 
 docker cli is an option, but nobody uses it.
 docker compose is a docker option to automate and simplify networking orchestration for docker containers (uses docker cli underneath, but removes complexity)
@@ -112,7 +114,7 @@ docker-compose ps // local to your current directory (and read the docker-compos
 
 
 
-# Using docker volumes
+## Using docker volumes
 
 a docker volume is a reference point to the local filesystem (mapping of a folder inside the container to a folder outside)
 docker volumes is quite a pain in the CLI
@@ -444,11 +446,13 @@ To configure your CURRENT terminal window to use docker server inside the miniku
 `eval $(minikube docker-env)
 
 The command `minikube docker-env` does the following:
+```
 export DOCKER_TLS_VERIFY="1"
 export DOCKER_HOST="tcp://192.168.99.105:2376"
 export DOCKER_CERT_PATH="/Users/pierre-louisgingembre/.minikube/certs"
 # Run this command to configure your shell:
 # eval $(minikube docker-env) ==> gives us a hint on what to use to get this from the local laptop
+```
 
 Why we want to do that? Couple of ideas:
 - Use all the same debugging tools/techniques we learned with docker CLI ==> most of these commands are available with a kubectl command
@@ -457,7 +461,7 @@ Why we want to do that? Couple of ideas:
 
 
 ## Example of a real app using microservices and k8s
-
+```
                      +-----------------------------------------------------------------------------------------+
                      |               +-----------+------------------+                     +------------------+ |
                      |               |           |    Deployment    |                     |    Deployment    | |
@@ -484,7 +488,7 @@ Traffic +------->+ Ingress |                                             +--->+ 
                      |                                                                    |   Postgres PVC   | |
                      |                                                                    +------------------+ |
                      +-----------------------------------------------------------------------------------------+
-
+```
 All boxes named 'xxx Service' or 'Deployment' or 'xxx PVC' will need to have a separate config file (so 11 in total)
 
 

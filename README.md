@@ -945,9 +945,21 @@ Check namespaces:
 
 ## Deploy Kubernetes
 
-There are many options to deploy k8s:
+There are many options or tools to deploy k8s in your environment:
 - Learning environment:
   - Minikube ==> perfect for a developer who wants to test code on his/her local machine 
   - Vagrant VM
-- Kubespray ==> Production ready deployment using Ansible for automated deployment
-- Cloud implementations
+- Production environment:
+  - Supported container runtimes:
+    - Docker
+    - CRI-O
+    - Containerd
+    - Other CRI: frakti
+  - Using deployment tools:
+    - kubeadm
+    - KRIB
+    - kops
+    - Kubespray ==> Production ready deployment using Ansible for automated deployment
+  - Using cloud providers:
+    - AWS EC2
+    - 

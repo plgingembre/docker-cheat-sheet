@@ -147,7 +147,7 @@ vim inventory/mycluster-1/group_vars/all/*.yml
 ansible-playbook -i inventory/mycluster-1/hosts.yml  --become --become-user=root cluster.yml
 ```
 
-## Error handling during deployment
+### Error handling during deployment
 Last time I deployed a cluster, I encountered an error related to the version of Docker. 
 ```
 RUNNING HANDLER [container-engine/docker : Docker | wait for docker] *************************************************************************************************************************
@@ -195,6 +195,11 @@ docker_version: "19.03"
 ```
 
 Save the file and re-run the ansible script.
+
+## Install kubectl client
+```
+curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+```
 
 ## Build your own private docker registry (Optional)
 Follow the steps here: https://www.exoscale.com/syslog/setup-private-docker-registry/
